@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <p>注册</p>
+        <form action="http://localhost/register.php" method="POST">
+            用户名:<input type="text" name="name"><br>
+            密码:<input type="password" name="password"><br>
+            <input type="submit">
+        </form>
+        <p>登录</p>
+        <form action="http://localhost/log_in.php" method="POST">
+            用户名:<input type="text" name="name"><br>
+            密码:<input type="password" name="password"><br>
+            <input type="submit">
+        </form>
+        <p id="log">未登录！</p>
+    </body>
+    <script>
+        var source=new EventSource("http://localhost/log_in.php");
+        source.onmessage=function(event){
+            document.getElementById("log").innerHTML=event.data;
+            };
+    </script>
+</html>
